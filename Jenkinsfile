@@ -47,5 +47,13 @@ pipeline {
       }
     }
 
+stage('deploy to k8s') {
+      steps {
+        sh '''
+          envsubst < development.yaml | kubectl apply -f -
+'''
+      }
+    }
+
   }
 }
